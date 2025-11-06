@@ -1,0 +1,7 @@
+task_add:
+  path: /add-task
+  controller: App\Controller\TaskController::addTask
+  methods: POST
+  defaults:
+    _api_resource_class: null
+    _api_operation_name: add_task

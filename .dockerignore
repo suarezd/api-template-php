@@ -1,0 +1,10 @@
+# Ignorer les fichiers inutiles dans l'image
+.git
+.gitignore
+node_modules
+vendor
+var/cache
+var/log
+var/sessions
+docker
+.env.local

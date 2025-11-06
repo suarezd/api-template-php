@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+// ===================================================================
+// FORCER LE CHARGEMENT COMPLET DE L'AUTOLOAD AVANT symfony/runtime
+// C'est LA solution propre quand le Kernel n'est pas dans App\Kernel
+// ===================================================================
+$autoloadFile = __DIR__.'/../vendor/autoload.php';
+if (!file_exists($autoloadFile)) {
+    fwrite(STDERR, "Autoload manquant → lancez composer install\n");
+    exit(1);
+}
+require $autoloadFile;
+// ===================================================================
+
+require_once dirname(__DIR__) . '/vendor/autoload_runtime.php';
+
+return function (array $context) {
+    $kernel = new App\Infrastructure\Symfony\Kernel(
+            $context['APP_ENV'] ?? 'dev',
+            (bool) ($context['APP_DEBUG'] ?? true)
+    );
+    return new Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
+};

@@ -1,0 +1,12 @@
+controllers:
+  resource: '../../Controller/'
+  type: attribute
+
+when@dev:
+  _errors:
+    type: service
+    id: error_controller
+when@prod:
+  _errors:
+    type: service
+    id: error_controller

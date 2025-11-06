@@ -1,0 +1,10 @@
+# src/Infrastructure/Symfony/config/services.yaml
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\:
+    resource: '../src/*'
+    exclude:
+      - '../src/Infrastructure/Symfony/{DependencyInjection,Tests,Kernel.php}'

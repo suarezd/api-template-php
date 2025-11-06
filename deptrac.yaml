@@ -1,0 +1,13 @@
+deptrac:
+    paths: [./src]
+    layers:
+        - name: Domain
+          collectors: [{ type: className, regex: ^App\Domain\ }]
+        - name: Application
+          collectors: [{ type: className, regex: ^App\Application\ }]
+        - name: Infrastructure
+          collectors: [{ type: className, regex: ^App\Infrastructure\ }]
+    ruleset:
+        Domain: [Application]
+        Application: [Infrastructure]
+        Infrastructure: ~

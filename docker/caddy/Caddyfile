@@ -1,0 +1,24 @@
+{
+    auto_https off
+}
+
+:80 {
+    encode gzip
+
+    @api path /api/*
+
+    handle @api {
+                    uri strip_prefix /api
+                    php_fastcgi php:9000
+                }
+
+    handle {
+           # ← LA LIGNE MAGIQUE QUI MANQUAIT
+               rewrite * /index.php
+               php_fastcgi php:9000
+           }
+
+    log {
+            output file /var/log/caddy/access.log
+        }
+}

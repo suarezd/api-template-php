@@ -1,0 +1,32 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - .:/var/www/html
+    expose:
+      - "9000"
+    healthcheck:
+      test: ["CMD", "php-fpm", "-t"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  caddy:
+    image: caddy:2.8
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - .:/var/www/html
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      php:
+        condition: service_healthy
+
+volumes:
+  caddy_data:
+  caddy_config:
