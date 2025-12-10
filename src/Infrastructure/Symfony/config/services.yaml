@@ -6,9 +6,6 @@ services:
   Infrastructure\Symfony\Controller\HelloController:
     tags: ['controller.service_arguments']
 
-  Infrastructure\Symfony\Controller\ApiController:
-    tags: ['controller.service_arguments']
-
   Infrastructure\Symfony\Controller\TaskController:
     tags: ['controller.service_arguments']
 
