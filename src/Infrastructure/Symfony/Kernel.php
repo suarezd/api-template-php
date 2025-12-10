@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Symfony;
+declare(strict_types=1);
+
+namespace Infrastructure\Symfony;
 
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -12,27 +14,28 @@ class Kernel extends BaseKernel
     {
         return [
             new FrameworkBundle(),
-            // Ajoute les autres bundles ici plus tard (ApiPlatform, Doctrine, etc.)
         ];
     }
 
     public function getProjectDir(): string
     {
-        return \dirname(__DIR__, 3); // Important : remonte à la racine du projet
+        return __DIR__;
     }
 
     public function getCacheDir(): string
     {
-        return $this->getProjectDir() . '/var/cache/' . $this->environment;
+        return __DIR__ . '/var/cache/' . $this->environment;
     }
 
     public function getLogDir(): string
     {
-        return $this->getProjectDir() . '/var/log';
+        return __DIR__ . '/var/log';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load($this->getProjectDir() . '/config/config_{$this->environment}.yaml');
+        $configDir = __DIR__ . '/config';
+        $loader->load($configDir . '/services.yaml');
+        $loader->load($configDir . '/packages/framework.yaml');
     }
 }

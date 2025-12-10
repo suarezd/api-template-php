@@ -1,8 +1,0 @@
-controllers:
-  resource: '../../Controller/'
-  type: attribute
-  prefix: ''
-
-_errors:
-  type: service
-  id: error_controller

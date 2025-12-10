@@ -15,12 +15,8 @@ Template ultra-moderne prêt en 30 secondes, fonctionnel dès le premier `git cl
 git clone https://github.com/suarezd/api-template-php.git
 cd api-template-php
 
-# Ubuntu/Debian seulement (une fois par machine)
 git config --global --add safe.directory "$(pwd)"
 
-# Tout en une commande
 make prepare
 
-# Vérification
 make test_api
-# → ✅ 200 OK – Tout fonctionne !

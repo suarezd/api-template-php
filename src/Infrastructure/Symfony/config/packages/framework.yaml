@@ -1,10 +1,17 @@
 framework:
   secret: '%env(APP_SECRET)%'
+
   router:
     utf8: true
-    enable_attributes: true   # <— LA LIGNE MAGIQUE QUI MANQUAIT DEPUIS LE DÉBUT
+    strict_requirements: ~
+    resource: '%kernel.project_dir%/config/routes.yaml'
+
   handle_all_throwables: true
-  annotations: true
   php_errors:
     log: true
   error_controller: 'error_controller'
+
+  session:
+    enabled: false
+
+  http_cache: true

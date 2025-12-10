@@ -1,10 +1,21 @@
-# src/Infrastructure/Symfony/config/services.yaml
 services:
   _defaults:
     autowire: true
     autoconfigure: true
 
-  App\:
-    resource: '../src/*'
-    exclude:
-      - '../src/Infrastructure/Symfony/{DependencyInjection,Tests,Kernel.php}'
+  Infrastructure\Symfony\Controller\HelloController:
+    tags: ['controller.service_arguments']
+
+  Infrastructure\Symfony\Controller\ApiController:
+    tags: ['controller.service_arguments']
+
+  Infrastructure\Symfony\Controller\TaskController:
+    tags: ['controller.service_arguments']
+
+  Infrastructure\Symfony\Controller\MetricsController:
+    tags: ['controller.service_arguments']
+
+  Application\AddTaskUseCase: ~
+
+  Domain\TaskRepository:
+    class: Infrastructure\Persistence\InMemoryTaskRepository
