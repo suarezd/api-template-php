@@ -13,7 +13,7 @@ class HelloController
     public function __invoke(): JsonResponse
     {
         return new JsonResponse([
-            'message'   => '🎉 Ton template Symfony 8 + namespace personnalisé marche à 100 % !',
+            'message'   => 'Ton template Symfony 8 + namespace personnalise marche a 100% !',
             'php'       => PHP_VERSION,
             'symfony'   => \Symfony\Component\HttpKernel\Kernel::VERSION,
             'datetime'  => (new \DateTimeImmutable())->format('c'),

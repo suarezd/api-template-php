@@ -60,19 +60,17 @@ make clean         # Nettoyage complet (down + suppression cache/vendor)
 
 ```
 src/
-├── Domain/                    # Entités métier pures
+├── Domain/                    # Entites metier pures
 │   ├── Task.php
-│   ├── City.php
 │   └── TaskRepository.php    # Interface
 ├── Application/               # Use Cases
 │   └── AddTaskUseCase.php
-└── Infrastructure/            # Implémentations techniques
+└── Infrastructure/            # Implementations techniques
     ├── Persistence/
     │   └── InMemoryTaskRepository.php
     └── Symfony/
         ├── Controller/
         │   ├── HelloController.php
-        │   ├── ApiController.php
         │   ├── TaskController.php
         │   └── MetricsController.php
         ├── Kernel.php
