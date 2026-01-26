@@ -12,7 +12,9 @@ services:
   Infrastructure\Symfony\Controller\MetricsController:
     tags: ['controller.service_arguments']
 
-  Application\AddTaskUseCase: ~
+  Application\Command\AddTaskUseCase: ~
+  
+  Application\Query\GetTasksUseCase: ~
 
   Domain\TaskRepository:
     class: Infrastructure\Persistence\InMemoryTaskRepository

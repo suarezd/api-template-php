@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller;
 
-use Application\AddTaskUseCase;
+use Application\Command\AddTaskUseCase;
+use Application\Query\GetTasksUseCase;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +14,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class TaskController extends AbstractController
 {
     public function __construct(
-        private readonly AddTaskUseCase $addTaskUseCase
+        private readonly AddTaskUseCase $addTaskUseCase,
+        private readonly GetTasksUseCase $getTasksUseCase
     ) {
     }
 
@@ -36,6 +38,16 @@ class TaskController extends AbstractController
         } catch (\InvalidArgumentException $e) {
             return $this->json(['error' => $e->getMessage()], 400);
         } catch (\Exception $e) {
+            return $this->json(['error' => 'Erreur serveur: ' . $e->getMessage()], 500);
+        }
+    }
+
+    #[Route('/tasks', methods: ['GET'])]
+    public function getTasks(Request $request): JsonResponse
+    {
+        try {
+            return $this->json($this->getTasksUseCase->findAll(), 200);
+        } catch (\Throwable $e) {
             return $this->json(['error' => 'Erreur serveur: ' . $e->getMessage()], 500);
         }
     }
