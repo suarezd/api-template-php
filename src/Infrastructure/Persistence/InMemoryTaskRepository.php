@@ -9,7 +9,6 @@ use Domain\TaskRepository;
 
 class InMemoryTaskRepository implements TaskRepository
 {
-    /** @var array<string, Task> */
     private array $tasks = [];
 
     public function save(Task $task): void

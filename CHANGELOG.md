@@ -50,6 +50,3 @@
 - `OPTIMIZATIONS.md`
 - `CHANGELOG.md`
 
----
-
-Pour plus de détails, consultez [OPTIMIZATIONS.md](./OPTIMIZATIONS.md)

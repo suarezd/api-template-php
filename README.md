@@ -60,19 +60,20 @@ make clean         # Nettoyage complet (down + suppression cache/vendor)
 
 ```
 src/
-├── Domain/                    # Entités métier pures
+├── Domain/                    # Entites metier pures
 │   ├── Task.php
-│   ├── City.php
 │   └── TaskRepository.php    # Interface
 ├── Application/               # Use Cases
-│   └── AddTaskUseCase.php
-└── Infrastructure/            # Implémentations techniques
+|   ├── Command/
+|   │   └── AddTaskUseCase.php
+│   └── Query/
+|       └── GetTaskskUseCase.php
+└── Infrastructure/            # Implementations techniques
     ├── Persistence/
     │   └── InMemoryTaskRepository.php
     └── Symfony/
         ├── Controller/
         │   ├── HelloController.php
-        │   ├── ApiController.php
         │   ├── TaskController.php
         │   └── MetricsController.php
         ├── Kernel.php
@@ -84,7 +85,6 @@ src/
 | Route | Méthode | Description |
 |-------|---------|-------------|
 | `/hello` | GET | Health check avec infos système |
-| `/api/hello` | GET | Endpoint API simple |
 | `/add-task` | POST | Créer une tâche |
 | `/metrics` | GET | Métriques Prometheus |
 
@@ -142,7 +142,7 @@ Performances attendues :
 ab -n 1000 -c 10 http://localhost/hello
 
 # wrk (recommandé)
-wrk -t4 -c100 -d30s http://localhost/api/hello
+wrk -t4 -c100 -d30s http://localhost/hello
 ```
 
 ## 📚 Documentation
