@@ -1,6 +1,6 @@
 # API Template PHP – Symfony 8.0 RC + PHP 8.4 + Architecture Hexagonale
 
-Template ultra-moderne avec monitoring Prometheus/Grafana, prêt en 30 secondes.
+Template ultra-moderne avec monitoring Prometheus/Grafana.
 
 ## 🎯 Stack Technique
 
