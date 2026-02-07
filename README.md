@@ -10,7 +10,6 @@ Template ultra-moderne avec monitoring Prometheus/Grafana.
 - **Architecture**: Hexagonale (Domain / Application / Infrastructure)
 - **Cache**: APCu (mémoire partagée)
 - **Monitoring**: Prometheus + Grafana
-- **Permissions**: Zéro problème sur Linux
 
 ## 🚀 Démarrage Rapide
 
